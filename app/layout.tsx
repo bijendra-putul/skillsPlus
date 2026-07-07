@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Arial } from 'next/font/google';
+import { Geist, Geist_Mono, Roboto } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/Header';
@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const arial = Arial({
-  variable: '--font-arial',
+const roboto = Roboto({
+  variable: '--font-roboto',
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700', '900'],
 });
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${arial.variable} h-full`}
+      className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
