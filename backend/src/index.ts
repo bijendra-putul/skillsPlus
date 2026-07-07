@@ -7,7 +7,7 @@ import connectDB from './config/database';
 import connectCloudinary from './config/cloudinary';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import authRoutes from './routes/authRoutes';
-import categoryRoutes from './routes/categoryRoutes';
+//import categoryRoutes from './routes/categoryRoutes';
 import productRoutes from './routes/productRoutes';
 import blogRoutes from './routes/blogRoutes';
 import analyticsRoutes from './routes/analyticsRoutes';
@@ -15,7 +15,7 @@ import newsletterRoutes from './routes/newsletterRoutes';
 import contactRoutes from './routes/contactRoutes';
 import userRoutes from './routes/userRoutes';
 import settingsRoutes from './routes/settingsRoutes';
-
+import categoryRoutes from './routes/categories';
 // Load environment variables
 dotenv.config();
 
@@ -52,7 +52,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/categories', categoryRoutes);
+//app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/analytics', analyticsRoutes);
@@ -60,6 +60,7 @@ app.use('/api/newsletter', newsletterRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // Error handling
 app.use(notFound);
