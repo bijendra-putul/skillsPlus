@@ -1,63 +1,33 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import User, { IUser } from '../models/User';
 
-interface AuthRequest extends Request {
-  user?: IUser;
+export interface AuthRequest extends Request {
+  user?: any;
 }
 
-// Protect routes - require authentication
-export const protect = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
-  let token: string | undefined;
-
-  // Get token from header
-  if (req.headers.authorization?.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1];
-  }
-
-  if (!token) {
-    res.status(401).json({
-      success: false,
-      message: 'Not authorized to access this route',
-    });
-    return;
-  }
-
+export const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: string };
+    const token = req.headers.authorization?.split(' ')[1] || req.cookies?.token;
 
-    // Get user from token
-    const user = await User.findById(decoded.id);
-
-    if (!user) {
-      res.status(401).json({
-        success: false,
-        message: 'User not found',
-      });
-      return;
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided' });
     }
 
-    req.user = user;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+    req.user = decoded;
     next();
   } catch (error) {
-    res.status(401).json({
-      success: false,
-      message: 'Not authorized to access this route',
-    });
+    res.status(401).json({ message: 'Invalid token' });
   }
 };
 
-// Admin only access
-export const adminOnly = (req: AuthRequest, res: Response, next: NextFunction): void => {
-  if (req.user?.role !== 'admin') {
-    res.status(403).json({
-      success: false,
-      message: 'Admin access required',
-    });
-    return;
+export const adminMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    if (!req.user || req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Admin access required' });
+    }
+    next();
+  } catch (error) {
+    res.status(403).json({ message: 'Forbidden' });
   }
-  next();
 };
-
-export default { protect, adminOnly };

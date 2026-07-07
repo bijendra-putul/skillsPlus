@@ -96,4 +96,8 @@ router.delete('/:id', authMiddleware, adminMiddleware, async (req: Request, res:
   }
 });
 
+<<<<<<< HEAD
 export default router;
+=======
+export default router;
+>>>>>>> 2cce6da3356a85126a6094e4ddbe410c4e815e4e
