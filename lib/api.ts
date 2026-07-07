@@ -1,4 +1,4 @@
-    import { Product, Category, Blog, User, Settings, Contact, Newsletter } from './types';
+    import { Product, Category, Blog, User, Settings, Contact, Newsletter, Job, JobFilters } from './types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
@@ -213,3 +213,71 @@ export default {
   settingsAPI,
   userAPI,
 };
+
+
+
+export async function fetchJobs(filters: JobFilters = {}): Promise<Job[]> {
+  try {
+    const params = new URLSearchParams();
+    if (filters.category && filters.category !== 'All') {
+      params.append('category', filters.category);
+    }
+    if (filters.locationType) {
+      params.append('locationType', filters.locationType);
+    }
+    if (filters.search) {
+      params.append('search', filters.search);
+    }
+
+    const response = await fetch(`${API_BASE_URL}/jobs?${params.toString()}`, {
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      throw new Error('API communication failure');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to fetch jobs. Using fallback local storage mode.', error);
+    return [];
+  }
+}
+
+export async function fetchJobDetails(id: string): Promise<Job | null> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/jobs/${id}`, {
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      throw new Error('Listing request details failed');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(`Failed to fetch details for id: ${id}`, error);
+    return null;
+  }
+}
+
+export async function createJobPost(jobData: Partial<Job>): Promise<Job | null> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/jobs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jobData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Creation query execution rejected by database constraints');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to register job post listing on database: ', error);
+    return null;
+  }
+}

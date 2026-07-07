@@ -25,7 +25,7 @@ export function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Categories', href: '/categories' },
-    { name: 'Products', href: '/products' },
+    { name: 'Find Jobs', href: '/' }, // Pivoted 'Products' navigation item to 'Find Jobs' pointing to core feed
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
@@ -40,7 +40,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {}
         <nav className="hidden md:flex items-center space-x-6">
           {navigation.map((item) => (
             <Link
@@ -55,6 +55,7 @@ export function Header() {
           ))}
         </nav>
 
+        {}
         <div className="flex items-center space-x-4">
           <SearchComponent />
 
@@ -81,16 +82,16 @@ export function Header() {
             </div>
           ) : (
             <div className="flex items-center space-x-2">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" asChild>
                 <Link href="/login">Login</Link>
               </Button>
-              <Button size="sm">
+              <Button size="sm" asChild>
                 <Link href="/register">Register</Link>
               </Button>
             </div>
           )}
 
-          {/* Mobile Menu Button */}
+          {}
           <Button
             variant="ghost"
             size="icon"
@@ -102,7 +103,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {}
       {isMenuOpen && (
         <nav className="md:hidden border-t bg-background">
           <div className="container mx-auto py-4 space-y-2">

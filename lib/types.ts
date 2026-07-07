@@ -165,3 +165,30 @@ export interface PaginatedResponse<T> {
   pages: number;
   data: T[];
 }
+
+export interface Job {
+  _id: string;
+  title: string;
+  companyName: string;
+  companyLogo?: string;
+  category: string;
+  jobType: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
+  locationType: 'Remote' | 'Hybrid' | 'Onsite';
+  location: string;
+  salaryMin?: number;
+  salaryMax?: number;
+  salaryCurrency: string;
+  experienceLevel: 'Entry' | 'Mid' | 'Senior' | 'Lead';
+  applyUrl: string;
+  description: string;
+  requirements: string[];
+  skills: string[];
+  isFeatured: boolean;
+  createdAt: string;
+}
+
+export interface JobFilters {
+  category?: string;
+  locationType?: string;
+  search?: string;
+}

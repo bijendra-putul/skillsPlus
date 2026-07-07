@@ -87,9 +87,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} NearSkill. All rights reserved.</p>
-        </div>
+         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-slate-500 space-y-3">
+        <p className="font-semibold text-slate-700">NearSkill Pivot Integration Ecosystem</p>
+        <p>© 2026 NearSkill clone repository staging. Designed to connect seamlessly with active local database documents.</p>
+        <p className="text-slate-400 text-[11px]">All system processes operational. Curated high-salary data structures.</p>
+      </div>
       </div>
     </footer>
   );

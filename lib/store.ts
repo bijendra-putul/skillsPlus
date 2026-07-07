@@ -3,13 +3,13 @@ import { persist } from 'zustand/middleware';
 import { User, Product, Category, Blog, Settings } from './types';
 
 interface AuthState {
-  user: User | null;
+  user: { name: string; email: string; role?: string } | null;
   token: string | null;
   isAuthenticated: boolean;
   savedProducts: Product[];
   addSavedProduct: (product: Product) => void;
   removeSavedProduct: (id: string) => void;
-  login: (user: User, token: string) => void;
+  login: (userData: { name: string; email: string }, token?: string) => void;
   logout: () => void;
   updateUser: (user: Partial<User>) => void;
 }
@@ -48,10 +48,16 @@ export const useAuthStore = create<AuthState>()(
       ),
     })),
 
-      login: (user, token) =>
-        set({ user, token, isAuthenticated: true }),
-      logout: () =>
-        set({ user: null, token: null, isAuthenticated: false }),
+      login: (userData, token) => {
+    if (token) {
+      localStorage.setItem('auth_token', token);
+    }
+    set({ user: userData, isAuthenticated: true });
+  },
+  logout: () => {
+    localStorage.removeItem('auth_token');
+    set({ user: null, isAuthenticated: false });
+  },
       updateUser: (userData) =>
         set((state) => ({
           user: state.user ? { ...state.user, ...userData } : null,
