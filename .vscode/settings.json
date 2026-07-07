@@ -1,0 +1,7 @@
+{
+    "geminicodeassist.outlines.automaticOutlineGeneration": true,
+    "CodeGPT.apiKey": "Anthropic",
+    "cloude-code-toolbox.intelligence.autoScanMcpSkillsOnWorkspaceOpen": true,
+    "cloude-code-toolbox.tokenOptimization.enabled": true,
+    "cloude-code-toolbox.safetyGuards.enabled": false
+}
