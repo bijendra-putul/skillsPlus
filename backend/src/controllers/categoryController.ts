@@ -5,7 +5,9 @@ import Product from '../models/Product';
 // @desc    Get all categories
 // @route   GET /api/categories
 // @access  Public
-export const getCategories = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+// Line 8
+// Line 8
+export const getCategories = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const categories = await Category.find();
     

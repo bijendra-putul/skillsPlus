@@ -2,21 +2,23 @@ import { Request, Response, NextFunction } from 'express';
 //import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import sendEmail from '../utils/email';
-import jwt, { SignOptions } from "jsonwebtoken";
-
+import jwt from "jsonwebtoken";
+const secret = process.env.JWT_SECRET || 'fallback_secret_key';
 // Generate JWT Token
-  const generateToken = (id: string): string => {
-  const secret = process.env.JWT_SECRET;
-
-  if (!secret) {
-    throw new Error("JWT_SECRET is not defined");
-  }
-
-  const options: SignOptions = {
-    expiresIn: "7d",
-  };
-
-  return jwt.sign({ id }, secret, options);
+  const generateToken = (
+  id: string,
+  role: string
+): string => {
+  return jwt.sign(
+    {
+      id,
+      role,
+    },
+    secret,
+    {
+      expiresIn: "7d",
+    }
+  );
 };
 
 // @desc    Register user
@@ -43,7 +45,10 @@ export const register = async (req: Request, res: Response, next: NextFunction):
       password,
     });
 
-    const token = generateToken(user._id.toString());  
+    const token = generateToken(
+    user._id.toString(),
+    user.role
+);
 
     res.status(201).json({
       success: true,
@@ -87,7 +92,10 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
       return;
     }
 
-    const token = generateToken(user._id.toString());
+    const token = generateToken(
+    user._id.toString(),
+    user.role
+);
 
     res.status(200).json({
       success: true,
@@ -170,7 +178,7 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
     user.resetPasswordExpires = undefined;
     await user.save();
 
-    const newToken = generateToken(user._id.toString());
+    const newToken = generateToken(user._id.toString(), user.role);
 
     res.status(200).json({
       success: true,

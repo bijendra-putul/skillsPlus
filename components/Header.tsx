@@ -26,8 +26,8 @@ export function Header() {
     { name: 'Home', href: '/' },
     { name: 'Categories', href: '/categories' },
     { name: 'Find Jobs', href: '/' }, // Pivoted 'Products' navigation item to 'Find Jobs' pointing to core feed
-    { name: 'Blog', href: '/blog' },
-    { name: 'About', href: '/about' },
+    // { name: 'Blog', href: '/blog' },
+    // { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -36,7 +36,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="text-2xl font-bold">
-            NearSkill
+            SkillPlus
           </Link>
         </div>
 
@@ -58,7 +58,6 @@ export function Header() {
         {}
         <div className="flex items-center space-x-4">
           <SearchComponent />
-
           {mounted && (
             <Button
               variant="ghost"
@@ -72,7 +71,6 @@ export function Header() {
               )}
             </Button>
           )}
-
           {isAuthenticated ? (
             <div className="flex items-center space-x-2">
               <span className="text-sm">Hi, {user?.name}</span>
@@ -90,7 +88,6 @@ export function Header() {
               </Button>
             </div>
           )}
-
           {}
           <Button
             variant="ghost"

@@ -63,7 +63,7 @@ export default function RegisterPage() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Create Account</CardTitle>
-          <CardDescription>Sign up to get started with NearSkill</CardDescription>
+          <CardDescription>Sign up to get started with SkillPlus</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">

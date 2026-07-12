@@ -1,24 +1,23 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+// middleware.ts  (place in project root, next to package.json)
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
 
-  // Protect admin routes
-  if (pathname.startsWith('/admin')) {
-    const token = request.cookies.get('token')?.value;
-    
+  // Allow login page
+  if (pathname === "/admin/login") return NextResponse.next();
+
+  // Protect all /admin/* routes
+  if (pathname.startsWith("/admin")) {
+    const token = request.cookies.get("token")?.value;
     if (!token) {
-      return NextResponse.redirect(new URL('/login?redirect=' + pathname, request.url));
+      return NextResponse.redirect(new URL("/admin/login", request.url));
     }
-
-    // Note: Full role validation happens in useAuthStore on client
-    // This is just a basic check to redirect unauthenticated users
   }
-
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ["/admin/:path*"],
 };

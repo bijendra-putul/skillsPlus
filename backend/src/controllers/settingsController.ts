@@ -4,7 +4,8 @@ import Settings from '../models/Settings';
 // @desc    Get settings
 // @route   GET /api/settings
 // @access  Public
-export const getSettings = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+// Line 7
+export const getSettings = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     let settings = await Settings.findOne();
 

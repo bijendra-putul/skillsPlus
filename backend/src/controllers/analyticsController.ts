@@ -8,7 +8,7 @@ import Category from '../models/Category';
 // @desc    Get dashboard stats
 // @route   GET /api/analytics/dashboard
 // @access  Private/Admin
-export const getDashboardStats = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getDashboardStats = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const totalProducts = await Product.countDocuments({ isActive: true });
     const totalCategories = await Category.countDocuments();
@@ -70,7 +70,7 @@ export const getDashboardStats = async (req: Request, res: Response, next: NextF
 // @desc    Get product analytics
 // @route   GET /api/analytics/products
 // @access  Private/Admin
-export const getProductAnalytics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getProductAnalytics = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const analytics = await Analytics.aggregate([
       {

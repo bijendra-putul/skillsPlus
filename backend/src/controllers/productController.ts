@@ -196,7 +196,8 @@ export const trackClick = async (req: Request, res: Response, next: NextFunction
 // @desc    Get featured products
 // @route   GET /api/products/featured
 // @access  Public
-export const getFeaturedProducts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+// Line 199
+export const getFeaturedProducts = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const products = await Product.find({ isActive: true, isFeatured: true })
       .populate('category', 'name slug')

@@ -260,7 +260,7 @@ async function seedDatabase() {
     console.log(`Seeded ${createdBlogs.length} blogs`);
 
     // Create admin user
-    const adminUser = await User.create({
+    await User.create({
       name: 'Admin',
       email: 'admin@nearskill.com',
       password: 'admin123',

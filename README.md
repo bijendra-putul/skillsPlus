@@ -257,3 +257,13 @@ npm run dev
 ## License
 
 MIT License
+
+# ── BACKEND ─────────────────────────────cd backendnpm install# Create .env (copy the values from step 2 above)# Then seed the admin user + categories:node scripts/seedAdmin.js# Start backendnpm run dev        # or: node index.js / node server.js# ── FRONTEND (new terminal) ──────────────cd frontendnpm install# Make sure .env.local has NEXT_PUBLIC_API_URL=http://localhost:5000npm run devShow more
+# 🔐 Admin Credentials
+# FieldValueURLhttp://localhost:3000/admin/loginEmailadmin@jobportal.comPasswordAdmin@123
+
+# ✅ What You Get After Setup
+# PageURLAdmin Loginhttp://localhost:3000/admin/loginAdmin Dashboardhttp://localhost:3000/adminManage Jobshttp://localhost:3000/admin/jobsManage Categorieshttp://localhost:3000/admin/categoriesManage Usershttp://localhost:3000/admin/users
+
+
+# 💡 If login returns 404 on /api/auth/login — paste your backend routes/auth.js file and I'll fix the exact route path for you.

@@ -5,9 +5,9 @@ export function Footer() {
   return (
     <footer className="bg-muted/50 border-t">
       <div className="container mx-auto py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-4">
           <div>
-            <h3 className="text-lg font-bold mb-4">NearSkill</h3>
+            <h3 className="text-lg font-bold mb-4">SkillPlus</h3>
             <p className="text-sm text-muted-foreground">
               Discover useful products, tools, software, courses, and AI tools with honest reviews and comparisons.
             </p>
@@ -88,8 +88,8 @@ export function Footer() {
         </div>
 
          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-slate-500 space-y-3">
-        <p className="font-semibold text-slate-700">NearSkill Pivot Integration Ecosystem</p>
-        <p>© 2026 NearSkill clone repository staging. Designed to connect seamlessly with active local database documents.</p>
+        <p className="font-semibold text-slate-700">Skillplus Pivot Integration Ecosystem</p>
+        <p>© 2026 Skillplus clone repository staging. Designed to connect seamlessly with active local database documents.</p>
         <p className="text-slate-400 text-[11px]">All system processes operational. Curated high-salary data structures.</p>
       </div>
       </div>

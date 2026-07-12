@@ -8,7 +8,7 @@ import {
   removeSavedProduct,
   getSavedProducts,
 } from '../controllers/userController';
-import { protect, adminOnly } from '../middleware/auth';
+import { protect, adminOnly} from '../middleware/auth';
 
 const router = Router();
 

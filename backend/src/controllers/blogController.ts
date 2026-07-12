@@ -190,7 +190,7 @@ export const addComment = async (req: Request, res: Response, next: NextFunction
 // @desc    Get featured blogs
 // @route   GET /api/blogs/featured
 // @access  Public
-export const getFeaturedBlogs = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getFeaturedBlogs = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const blogs = await Blog.find({ isPublished: true })
       .populate('category', 'name slug')

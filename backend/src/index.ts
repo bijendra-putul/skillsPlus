@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import dotenv from 'dotenv';
+//import dotenv from 'dotenv';
 import connectDB from './config/database';
 import connectCloudinary from './config/cloudinary';
 import { errorHandler, notFound } from './middleware/errorHandler';
@@ -17,6 +17,7 @@ import userRoutes from './routes/userRoutes';
 import settingsRoutes from './routes/settingsRoutes';
 import categoryRoutes from './routes/categories';
 // Load environment variables
+const dotenv = require('dotenv');
 dotenv.config();
 
 // Connect to database

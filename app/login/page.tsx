@@ -74,7 +74,7 @@ export default function LoginPage() {
         {/* Header Title */}
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2 text-2xl font-black text-indigo-600 tracking-tight">
-            Near<span className="text-slate-900">Skill</span>
+            Skill<span className="text-slate-900">Plus</span>
           </Link>
           <h2 className="mt-6 text-3xl font-extrabold text-slate-900 tracking-tight">Welcome back</h2>
           <p className="mt-2 text-sm text-slate-500">
