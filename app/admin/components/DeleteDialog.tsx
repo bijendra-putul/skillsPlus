@@ -3,7 +3,7 @@
 
 interface DeleteDialogProps {
   isOpen: boolean;
-
+  title?: string;
   subtitle?: string;
   onConfirm: () => void;
   onCancel: () => void;

@@ -1,9 +1,8 @@
 // app/admin/components/JobForm.tsx
 "use client";
-
 import { useEffect, useState } from "react";
-
 export interface JobFormData {
+  title: any;
   company: string;
   location: string;
   description: string;
@@ -16,8 +15,8 @@ export interface JobFormData {
   isActive: boolean;
   experience: string;
 }
-
 export const emptyJobForm: JobFormData = {
+  title:"",
   company: "",
   location: "",
   description: "",
@@ -28,7 +27,7 @@ export const emptyJobForm: JobFormData = {
   category: "",
   applyUrl: "",
   isActive: true,
-  experience: "",
+  experience: ""
 };
 
 interface JobFormProps {

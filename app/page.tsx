@@ -407,6 +407,7 @@ return (
               <JobCard
                 key={job._id}
                 job={job}
+                onSelect={() => setSelectedJob(job)}
                 onView={() => setSelectedJob(job)}
                 onDelete={() => handleDeletePost(job._id)}
               />

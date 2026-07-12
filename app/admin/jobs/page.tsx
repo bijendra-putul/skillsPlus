@@ -11,6 +11,7 @@ const ITEMS_PER_PAGE = 10;
 
 const JOB_TYPES = ["All", "Full-time", "Part-time", "Remote", "Internship", "Contract", "Freelance"];
 
+
 export default function AdminJobsPage() {
   const [jobs, setJobs] = useState<JobRecord[]>([]);
   const [loading, setLoading] = useState(true);

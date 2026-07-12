@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import JobForm, { JobFormData, emptyJobForm } from "./JobForm";
 
 export interface JobRecord {
+  createdAt: any;
+  title: string;
   _id: string;
   company: string;
   location?: string;
@@ -54,9 +56,9 @@ function jobToForm(job: JobRecord): JobFormData {
 
 function validate(data: JobFormData): Partial<Record<keyof JobFormData, string>> {
   const errs: Partial<Record<keyof JobFormData, string>> = {};
-  if (!data.title.trim()) errs.title = "Job title is required";
-  if (!data.company.trim()) errs.company = "Company name is required";
-  if (!data.description.trim()) errs.description = "Description is required";
+  if (!data.title?.trim()) errs.title = "Job title is required";
+  if (!data.company?.trim()) errs.company = "Company name is required";
+  if (!data.description?.trim()) errs.description = "Description is required";
   return errs;
 }
 

@@ -3,7 +3,9 @@ import { Job } from '@/lib/types';
 
 interface JobCardProps {
   job: Job;
+  onView?: () => void;
   onSelect: (job: Job) => void;
+  onDelete?: () => void | Promise<void>;
 }
 
 export default function JobCard({ job, onSelect }: JobCardProps) {
