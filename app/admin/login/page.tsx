@@ -107,12 +107,12 @@ export default function AdminLogin() {
             </button>
           </form>
 
-          {/* Credentials hint */}
+          {/* Credentials hint 
           <div className="mt-6 p-4 bg-white/[0.02] border border-white/5 rounded-xl">
             <p className="text-xs text-slate-500 font-medium mb-2">Default credentials:</p>
             <p className="text-xs text-slate-400">Email: <span className="text-indigo-400">admin@jobportal.com</span></p>
             <p className="text-xs text-slate-400">Password: <span className="text-indigo-400">Admin@123</span></p>
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>
