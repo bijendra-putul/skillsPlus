@@ -16,6 +16,8 @@ import contactRoutes from './routes/contactRoutes';
 import userRoutes from './routes/userRoutes';
 import settingsRoutes from './routes/settingsRoutes';
 import categoryRoutes from './routes/categories';
+
+import jobRoutesRoutes from './routes/jobRoutes';
 // Load environment variables
 const dotenv = require('dotenv');
 dotenv.config();
@@ -62,7 +64,7 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/categories', categoryRoutes);
-
+app.use('/api/jobs', jobRoutesRoutes);
 // Error handling
 app.use(notFound);
 app.use(errorHandler);
