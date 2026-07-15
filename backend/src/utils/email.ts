@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
-
+// import nodemailer from 'nodemailer';
+import * as nodemailer from "nodemailer";
 interface EmailOptions {
   email: string;
   subject: string;
