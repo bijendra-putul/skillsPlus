@@ -42,12 +42,24 @@ app.use(limiter);
 
 // CORS
 app.use(cors({
-  origin: [
-    process.env.CLIENT_URL || 'http://localhost:3000',
-    process.env.ADMIN_URL || 'http://localhost:3000/admin',
-  ],
+  origin:true,
   credentials: true,
 }));
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is running",
+  });
+});
+
+// app.use(cors({
+//   origin: [
+//     process.env.CLIENT_URL || 'https://www.iplpredictor.online',
+//     process.env.ADMIN_URL || 'https://www.iplpredictor.online/admin',
+//   ],
+//   credentials: true,
+// }));
 
 // Body parser
 app.use(express.json({ limit: '10mb' }));
